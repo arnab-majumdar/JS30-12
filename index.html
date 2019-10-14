@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <style>
+    #entered {
+      color: darkgreen;
+      font-family: "Bangla MN";
+      font-size: larger;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1> What is my favorite city?</h1>
+<p> Type and See! </p>
+<p id = "entered"> </p>
+<p id = "result"></p>
+
+<script>
+  let keyEntered = [];
+  const secretCity = "BARCELONA";
+  // const secretCityArray = secretCity.split('');
+  // const secretCityArraySorted = secretCityArray.sort().filter(function(el,i,a){return i===a.indexOf(el)});
+
+  window.addEventListener('keyup', function(e){
+
+    // if (keyEntered.includes(e.key.toLowerCase())) {
+    //   console.log("key already entered", keyEntered)
+    //   const p = document.getElementById('result');
+    //   p.innerText = "Already Entered The letter"
+    // } else {
+    keyEntered.push(e.key.toUpperCase());
+    console.log(`${e.key} was pressed`);
+    const q = document.getElementById('entered');
+    q.innerText = keyEntered;
+
+    keyEntered.splice(-secretCity.length -1, keyEntered - secretCity.length);
+
+    if(keyEntered.join('').includes(secretCity)) {
+      console.log("you did it!");
+      cornify_add();
+    }
+    // const p = document.getElementById('result');
+    // p.innerText = "Already Entered The letter"
+
+
+    // }
+
+
+
+  });
+
+</script>
+</body>
+</html>
